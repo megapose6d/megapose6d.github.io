@@ -1,0 +1,14 @@
+{
+  "name": "megapose-website",
+  "version": "0.1.0",
+  "scripts": {
+    "scss": "node-sass --watch scss/style.scss scss/style.css"
+  },
+  "dependencies": {
+    "aas": "^0.0.0",
+    "bootstrap": "^5.2.2",
+    "node-sass": "^8.0.0",
+    "saas": "^1.0.0",
+    "sass": "^1.56.2"
+  }
+}
