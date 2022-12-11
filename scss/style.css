@@ -8239,7 +8239,7 @@ textarea.form-control-lg {
   pointer-events: auto !important;
 }
 
-.rounded, .block, .block-bibtex, .block-usage, .block-results, .block-method, .block-abstract, .block-presentation {
+.rounded {
   border-radius: var(--bs-border-radius) !important;
 }
 
@@ -8259,7 +8259,7 @@ textarea.form-control-lg {
   border-radius: var(--bs-border-radius-lg) !important;
 }
 
-.rounded-4 {
+.rounded-4, .block, .block-bibtex, .block-usage, .block-results, .block-method, .block-abstract, .block-presentation {
   border-radius: var(--bs-border-radius-xl) !important;
 }
 
