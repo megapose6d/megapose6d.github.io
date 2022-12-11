@@ -9,12 +9,58 @@ a{
   @extend .container;
 }
 
+.block {
+  @extend .container;
+  @extend .bg-light;
+  @extend .m-4;
+  @extend .p-3;
+  @extend .rounded;
+}
+
 .block-title {
   @extend .container;
 }
 
+.block-presentation{
+  @extend .block;
+}
+
 .block-abstract {
+  @extend .block;
+}
+
+.block-method {
+  @extend .block;
+}
+
+.block-results {
+  @extend .block;
+}
+
+.block-usage {
+  @extend .block;
+}
+
+.block-bibtex {
+  @extend .block;
+}
+
+.figure-logos {
   @extend .container;
+  @extend .p-3;
+}
+
+.figure-logos img {
+  width: 80%;
+}
+
+.figure {
+  @extend .container;
+  @extend .p-3;
+}
+
+.figure img {
+  width: 100%;
 }
 
 .publication-title {
@@ -34,6 +80,7 @@ a{
     margin-bottom: 5px;
 }
 
+
 .link-btn{
   @extend .btn;
   @extend .btn-secondary;
@@ -41,6 +88,7 @@ a{
   @extend .mb-1;
   @extend .me-1;
 }
+
 
 .publication-video {
     position: relative;
@@ -59,6 +107,11 @@ a{
     height: 100%;
 }
 
+pre{
+  white-space: pre-wrap;
+  background-color: rgb(222, 213, 213);
+  @extend .p-2;
+}
 
 // Useless
 // .author-block {

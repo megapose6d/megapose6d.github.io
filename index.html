@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
+  <link rel="stylesheet" href="./scss/style.css">
+
 <head>
   <meta charset="utf-8">
-  <meta name="description" content="MegaPose: 6D Pose Estimation of Novel Objects via Render & Compare.">
+  <meta name="description" content="MegaPose 6D Pose Estimation of Novel Objects via Render & Compare.">
   <meta name="keywords" content="Object Pose Estimation,Robot Manipulation,Computer Vision">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="./scss/style.css">
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <title>MegaPose</title>
 </head>
 
@@ -14,60 +16,114 @@
 <div class="webpage">
 
 <div class="block-title">
-<center>
-<hr>
+  <hr>
+  <center>
 
-<h1 class="publication-title"> 
-  <b> MegaPose: <br>6D Pose Estimation of Novel Objects via Render & Compare </b> 
-</h1>
+  <h1 class="publication-title"> 
+    <b> MegaPose</b> <br>6D Pose Estimation of Novel Objects via Render & Compare </b> 
+  </h1>
 
-<h3>CoRL 2022</h3>
+  <h4>CoRL 2022</h4>
 
-<h4 class="publication-authors">
-    <a href="http://ylabbe.github.io">Yann Labbé</a>,&emsp;
-    <a href="http://lucasmanuelli.com/">Lucas Manuelli</a>,&emsp;
-    <a href="https://cs.gmu.edu/~amousavi/">Arsalan Mousavian</a>,&emsp;
-    <a href="https://research.nvidia.com/person/stephen-tyree">Stephen Tyree</a>,&emsp;<br>
-    <a href="https://cecas.clemson.edu/~stb/">Stan Birchfield</a>,&emsp;
-    <a href="https://research.nvidia.com/person/jonathan-tremblay">Jonathan Tremblay</a>,&emsp;
-    <a href="https://jcarpent.github.io/">Justin Carpentier</a>,&emsp;
-    <a href="http://imagine.enpc.fr/~aubrym/">Mathieu Aubry</a>,&emsp;<br>
-    <a href="https://homes.cs.washington.edu/~fox/">Dieter Fox</a>,&emsp;
-    <a href="http://people.ciirc.cvut.cz/~sivic/">Josef Sivic</a>
-</h4>
+  <h4 class="publication-authors">
+      <a href="http://ylabbe.github.io">Yann Labbé<sup>1</sup></a>,&emsp;
+      <a href="http://lucasmanuelli.com/">Lucas Manuelli<sup>2</sup></a>,&emsp;
+      <a href="https://cs.gmu.edu/~amousavi/">Arsalan Mousavian<sup>2</sup></a>,&emsp;
+      <a href="https://research.nvidia.com/person/stephen-tyree">Stephen Tyree<sup>2</sup></a>,&emsp;<br>
+      <a href="https://cecas.clemson.edu/~stb/">Stan Birchfield<sup>2</sup></a>,&emsp;
+      <a href="https://research.nvidia.com/person/jonathan-tremblay">Jonathan Tremblay<sup>2</sup></a>,&emsp;
+      <a href="https://jcarpent.github.io/">Justin Carpentier<sup>1</sup></a>,&emsp;
+      <a href="http://imagine.enpc.fr/~aubrym/">Mathieu Aubry<sup>3</sup></a>,&emsp;<br>
+      <a href="https://homes.cs.washington.edu/~fox/">Dieter Fox<sup>2,4</sup></a>,&emsp;
+      <a href="http://people.ciirc.cvut.cz/~sivic/">Josef Sivic<sup>5</sup></a>
+  </h4>
+  <div class="figure-logos">
+      <img class="img-responsive"  src="images/logos.png"/>
+  </div>
 
-<div class="publication-links">
-  <button class="link-btn">arXiv</button>
-  <button class="link-btn">Code</button>
-  <button class="link-btn">Video (1min spotlight)</button>
-  <button class="link-btn">Video (results)</button>
+  <div class="publication-links">
+    <a href=""><button class="link-btn">Paper on arXiv</button></a>
+    <a href="https://github.com/megapose6d/megapose6d"><button class="link-btn">Code</button></a>
+    <a href="https://www.youtube.com/watch?v=ZHsNkF9rfKo"><button class="link-btn">Video (1min presentation)</button></a>
+    <a href="https://www.youtube.com/watch?v=nwWxZQSZD7c"><button class="link-btn">Video (results)</button></a>
+  </div>
+  </center>
 </div>
-<hr>
 
+<div class="block-presentation">
+  <h4> Overview</h4>
+  <div class="figure">
+      <img class="img-responsive"  src="images/teaser.png"/>
+  </div>
 
-<div class="publication-video">
-<iframe width="1280" height="720" src="https://www.youtube.com/embed/ZHsNkF9rfKo" title="MegaPose - CoRL 2022 -  1 min presentation" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
-<hr>
+  <p align="justify">
+  <b>MegaPose</b> is a 6D pose estimation approach (a) that is trained on millions of synthetic scenes with thousands of different objects and (b) can be applied <em>without re-training</em> to estimate the pose of any novel object, given a CAD model and a region of interest displaying the object. It can thus be used to rapidly deploy visually guided robotic manipulation systems in novel scenes containing novel objects (c).
+  </p>
 
-</center>
+  <h4> 1 min presentation video</h4>
+  <div class="publication-video">
+  <iframe width="1280" height="720" src="https://www.youtube.com/embed/ZHsNkF9rfKo" title="MegaPose - CoRL 2022 -  1 min presentation" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
 </div>
 
 <div class="block-abstract">
-<h2>Abstract</h2>
+  <h2>Abstract</h2>
+  <p align="justify">
+  We introduce MegaPose, a method to estimate the 6D pose of novel objects, that is, objects unseen during training.
+  At inference time, the method only assumes knowledge of (i) a region of interest displaying the object in the image and (ii) a CAD model of the observed object.
+  The contributions of this work are threefold. 
+  First, we present a 6D pose refiner based on a render & compare strategy which can be applied to novel objects. The shape and coordinate system of the novel object are provided as inputs to the network by rendering multiple synthetic views of the object's CAD model.
+  Second, we introduce a novel approach for coarse pose estimation which leverages a network trained to classify whether the pose error between a synthetic rendering and an observed image of the same object can be corrected by the refiner.
+  Third, we introduce a large scale synthetic dataset of photorealistic images of thousands of objects with diverse visual and shape properties, and show that this diversity is crucial to obtain good generalization performance on novel objects.
+  We train our approach on this large synthetic dataset and apply it <i>without retraining</i> to hundreds of novel objects in real images from several pose estimation benchmarks. Our approach achieves state-of-the-art performance on the ModelNet and YCB-Video datasets. An extensive evaluation on the 7 core datasets of the BOP challenge demonstrates that our approach achieves performance competitive with existing approaches that require access to the target objects during training. Code, dataset and trained models are made available.
+  </p>
+</div>
 
-We introduce MegaPose, a method to estimate the 6D pose of novel objects, that is, objects unseen during training.
-At inference time, the method only assumes knowledge of (i) a region of interest displaying the object in the image and (ii) a CAD model of the observed object.
-The contributions of this work are threefold. 
-First, we present a 6D pose refiner based on a render & compare strategy which can be applied to novel objects. The shape and coordinate system of the novel object are provided as inputs to the network by rendering multiple synthetic views of the object's CAD model.
-Second, we introduce a novel approach for coarse pose estimation which leverages a network trained to classify whether the pose error between a synthetic rendering and an observed image of the same object can be corrected by the refiner.
-Third, we introduce a large scale synthetic dataset of photorealistic images of thousands of objects with diverse visual and shape properties, and show that this diversity is crucial to obtain good generalization performance on novel objects.
-We train our approach on this large synthetic dataset and apply it <i>without retraining</i> to hundreds of novel objects in real images from several pose estimation benchmarks. Our approach achieves state-of-the-art performance on the ModelNet and YCB-Video datasets. An extensive evaluation on the 7 core datasets of the BOP challenge demonstrates that our approach achieves performance competitive with existing approaches that require access to the target objects during training. Code, dataset and trained models are made available on this project page.
-<br>
+<div class="block-method">
+  <h2>Method</h2>
+  <center>
+  <div class="figure">
+      <img class="img-responsive"  src="images/method.png"/>
+  </div>
+  </center>
+  <p align="justify">
+  \(\oplus\) denotes concatenation. <b>(a) Coarse Estimator:</b> Given a cropped input image the coarse module renders the object in multiple input poses \(\{\mathcal{T}_{CO}^j\}\). The coarse network then classifies which rendered image best matches the observed image. <b>(b) Refiner:</b> Given an initial pose estimate \(\mathcal{T}_{CO}^k\) the refiner renders the objects at the estimated pose \(\mathcal{T}_{\textit{CO},1} := \mathcal{T}_{CO}^k\) (blue axes) along with 3 additional viewpoints \(\{\mathcal{T}_{\textit{CO},i}\}_{i=2}^4\) (green axes) defined such that the camera \(z\)-axis intersects the anchor point \(\mathcal{O}\). The refiner network consumes the concatenation of the observed and rendered images and predicts an updated pose estimate \(\mathcal{T}_{CO}^{k+1}\).
+  </p>
+</div>
 
+<div class="block-results">
+  <h2>Qualitative results</h2>
+  <div class="publication-video">
+  <iframe src="https://www.youtube.com/embed/nwWxZQSZD7c" title="MegaPose - CoRL 2022 - Results" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+</div>
+
+<div class="block-usage">
+  <h1>Using MegaPose</h1>
+  <h3> 6D pose estimation of novel objects </h3>
+  <p>You can try MegaPose using the 3D models of your own objects! We provide a notebook for running pose estimation on new objects in the <a href="https://github.com/megapose6d/megapose6d">github repository</a>.
+  </p>
+
+  <h3> Large-scale synthetic dataset </h3>
+  We release the large-scale synthetic training dataset we used to train MegaPose. You can use it for your own task! Please see the  <a href="https://github.com/megapose6d/megapose6d">github repository</a> for usage.
+  <center>
+  <div class="figure">
+      <img class="img-responsive"  src="images/training-images.jpg"/>
+  </div>
+  </center>
+</div>
+
+<div class="block-bibtex">
+  <h4> BibTeX</h4>
+  <pre><code>@inproceedings{labbe2022megapose,
+    title     = {MegaPose: 6D Pose Estimation of Novel Objects via Render \& Compare},
+    author    = {Labb\'e, Yann and Manuelli, Lucas and Mousavian, Arsalan and Tyree, Stephen and Birchfield, Stan and Tremblay, Jonathan and Carpentier, Justin and Aubry, Mathieu and Fox, Dieter and Sivic, Josef},
+    booktitle = {Proceedings of the 6th Conference on Robot Learning (CoRL)},
+    year      = {2022},
+  }</code> </pre>
+</div>
 
 <hr>
 </div>
-
 </body>
 </html>
