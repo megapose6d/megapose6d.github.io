@@ -28,19 +28,21 @@
   <h4>CoRL 2022</h4>
 
   <h4 class="publication-authors">
-      <a href="http://ylabbe.github.io">Yann Labbé<sup>1</sup></a>,&emsp;
-      <a href="http://lucasmanuelli.com/">Lucas Manuelli<sup>2</sup></a>,&emsp;
-      <a href="https://cs.gmu.edu/~amousavi/">Arsalan Mousavian<sup>2</sup></a>,&emsp;
-      <a href="https://research.nvidia.com/person/stephen-tyree">Stephen Tyree<sup>2</sup></a>,&emsp;<br>
-      <a href="https://cecas.clemson.edu/~stb/">Stan Birchfield<sup>2</sup></a>,&emsp;
-      <a href="https://research.nvidia.com/person/jonathan-tremblay">Jonathan Tremblay<sup>2</sup></a>,&emsp;
-      <a href="https://jcarpent.github.io/">Justin Carpentier<sup>1</sup></a>,&emsp;
-      <a href="http://imagine.enpc.fr/~aubrym/">Mathieu Aubry<sup>3</sup></a>,&emsp;<br>
-      <a href="https://homes.cs.washington.edu/~fox/">Dieter Fox<sup>2,4</sup></a>,&emsp;
-      <a href="http://people.ciirc.cvut.cz/~sivic/">Josef Sivic<sup>5</sup></a>
+    <ul class="list-inline">
+      <li><a href="http://ylabbe.github.io">Yann Labbé<sup>1</sup></a>,</li>
+      <li><a href="http://lucasmanuelli.com/">Lucas Manuelli<sup>2</sup></a>,</li>
+      <li><a href="https://cs.gmu.edu/~amousavi/">Arsalan Mousavian<sup>2</sup></a>,</li>
+      <li><a href="https://research.nvidia.com/person/stephen-tyree">Stephen Tyree<sup>2</sup></a>,</li>
+      <li><a href="https://cecas.clemson.edu/~stb/">Stan Birchfield<sup>2</sup></a>,</li>
+      <li><a href="https://research.nvidia.com/person/jonathan-tremblay">Jonathan Tremblay<sup>2</sup></a></li>
+      <li><a href="https://jcarpent.github.io/">Justin Carpentier<sup>1</sup></a>,</li>
+      <li><a href="http://imagine.enpc.fr/~aubrym/">Mathieu Aubry<sup>3</sup></a>,</li>
+      <li><a href="https://homes.cs.washington.edu/~fox/">Dieter Fox<sup>2,4</sup></a>,</li>
+      <li><a href="http://people.ciirc.cvut.cz/~sivic/">Josef Sivic<sup>5</sup></a></li>
+    </ul>
   </h4>
-  <div class="figure-logos">
-      <img class="img-responsive"  src="images/logos.png"/>
+  <div class="figure">
+      <img src="images/logos.png"/>
   </div>
 
   <div class="publication-links">
@@ -55,7 +57,7 @@
 <div class="block-presentation">
   <h4> Overview</h4>
   <div class="figure">
-      <img class="img-responsive"  src="images/teaser.png"/>
+      <img src="images/teaser.png"/>
   </div>
 
   <p align="justify">
@@ -63,8 +65,9 @@
   </p>
 
   <h4> 1 min presentation video</h4>
-  <div class="publication-video">
-  <iframe width="1280" height="720" src="https://www.youtube.com/embed/ZHsNkF9rfKo" title="MegaPose - CoRL 2022 -  1 min presentation" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+  <div class="youtube-video">
+    <iframe src="https://www.youtube.com/embed/ZHsNkF9rfKo" title="MegaPose - CoRL 2022 -  1 min presentation" allowfullscreen></iframe>
   </div>
 </div>
 
@@ -83,11 +86,9 @@
 
 <div class="block-method">
   <h2>Method</h2>
-  <center>
   <div class="figure">
-      <img class="img-responsive"  src="images/method.png"/>
+      <img src="images/method.png"/>
   </div>
-  </center>
   <p align="justify">
   \(\oplus\) denotes concatenation. <b>(a) Coarse Estimator:</b> Given a cropped input image the coarse module renders the object in multiple input poses \(\{\mathcal{T}_{CO}^j\}\). The coarse network then classifies which rendered image best matches the observed image. <b>(b) Refiner:</b> Given an initial pose estimate \(\mathcal{T}_{CO}^k\) the refiner renders the objects at the estimated pose \(\mathcal{T}_{\textit{CO},1} := \mathcal{T}_{CO}^k\) (blue axes) along with 3 additional viewpoints \(\{\mathcal{T}_{\textit{CO},i}\}_{i=2}^4\) (green axes) defined such that the camera \(z\)-axis intersects the anchor point \(\mathcal{O}\). The refiner network consumes the concatenation of the observed and rendered images and predicts an updated pose estimate \(\mathcal{T}_{CO}^{k+1}\).
   </p>
@@ -97,93 +98,137 @@
   <h2>Qualitative results</h2>
 
   <h4>Video</h4>
-  <div class="publication-video">
+  <div class="youtube-video">
   <iframe src="https://www.youtube.com/embed/nwWxZQSZD7c" title="MegaPose - CoRL 2022 - Results" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
+  <br>
 
   <h4>Results on the BOP datasets</h4>
-
-  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+  <div id="carousel-estimates" class="carousel slide" data-bs-ride="true">
       <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></button>
+        <button type="button" data-bs-target="#carousel-estimates" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#carousel-estimates" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#carousel-estimates" data-bs-slide-to="2"></button>
+        <button type="button" data-bs-target="#carousel-estimates" data-bs-slide-to="3"></button>
+        <button type="button" data-bs-target="#carousel-estiamtes" data-bs-slide-to="4"></button>
+        <button type="button" data-bs-target="#carousel-estimates" data-bs-slide-to="5"></button>
+        <button type="button" data-bs-target="#carousel-estimates" data-bs-slide-to="6"></button>
+        <button type="button" data-bs-target="#carousel-estimates" data-bs-slide-to="7"></button>
+        <button type="button" data-bs-target="#carousel-estimates" data-bs-slide-to="8"></button>
+        <button type="button" data-bs-target="#carousel-estimates" data-bs-slide-to="9"></button>
       </div>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="results/estimates/qualitative_contour_2.png" class="d-block w-100">
+          <img src="results/estimates/estimates-000.jpg" class="d-block w-100">
         </div>
         <div class="carousel-item">
-          <img src="results/estimates/qualitative_contour.png" class="d-block w-100">
+          <img src="results/estimates/estimates-001.jpg" class="d-block w-100">
         </div>
         <div class="carousel-item">
-          <img src="results/estimates/qualitative_contour_2.png" class="d-block w-100">
+          <img src="results/estimates/estimates-002.jpg" class="d-block w-100">
+        </div>
+        <div class="carousel-item">
+          <img src="results/estimates/estimates-003.jpg" class="d-block w-100">
+        </div>
+        <div class="carousel-item">
+          <img src="results/estimates/estimates-004.jpg" class="d-block w-100">
+        </div>
+        <div class="carousel-item">
+          <img src="results/estimates/estimates-005.jpg" class="d-block w-100">
+        </div>
+        <div class="carousel-item">
+          <img src="results/estimates/estimates-006.jpg" class="d-block w-100">
+        </div>
+        <div class="carousel-item">
+          <img src="results/estimates/estimates-007.jpg" class="d-block w-100">
+        </div>
+        <div class="carousel-item">
+          <img src="results/estimates/estimates-008.jpg" class="d-block w-100">
+        </div>
+        <div class="carousel-item">
+          <img src="results/estimates/estimates-009.jpg" class="d-block w-100">
         </div>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <button class="carousel-control-prev" type="button" data-bs-target="#carousel-estimates" data-bs-slide="prev">
         <span class="carousel-control-prev-icon"></span>
         <span class="visually-hidden">Previous</span>
       </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <button class="carousel-control-next" type="button" data-bs-target="#carousel-estimates" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
       </button>
     </div>
+ For each example, we show (from left to right) (i) the input region of interest (ii) the coarse estimate, and (iii) the refined poses.
+<br>
+<br>
+<br>
 
   <h4>Tracking results</h4>
 
-  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+  <div id="carousel-tracking" class="carousel slide" data-bs-ride="true">
       <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></button>
+        <button type="button" data-bs-target="#carousel-tracking" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#carousel-tracking" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#carousel-tracking" data-bs-slide-to="2"></button>
       </div>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="results/estimates/qualitative_contour_2.png" class="d-block w-100">
+            <video class="img-fluid" loop muted controls>   
+              <source src="results/tracking/tracking-000.mp4" type="video/mp4">
+            </video>
         </div>
         <div class="carousel-item">
-          <img src="results/estimates/qualitative_contour.png" class="d-block w-100">
+            <video class="img-fluid" loop muted controls>   
+              <source src="results/tracking/tracking-000.mp4" type="video/mp4">
+            </video>
         </div>
         <div class="carousel-item">
-          <img src="results/estimates/qualitative_contour_2.png" class="d-block w-100">
+            <video class="img-fluid" loop muted controls>   
+              <source src="results/tracking/tracking-000.mp4" type="video/mp4">
+            </video>
         </div>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <button class="carousel-control-prev" type="button" data-bs-target="#carousel-tracking" data-bs-slide="prev">
         <span class="carousel-control-prev-icon"></span>
         <span class="visually-hidden">Previous</span>
       </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <button class="carousel-control-next" type="button" data-bs-target="#carousel-tracking" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
         <span class="visually-hidden">Next</span>
       </button>
     </div>
 
   <h4>Robotic experiments</h4>
 
-  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+  <div id="carousel-grasping" class="carousel slide" data-bs-ride="true">
       <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></button>
+        <button type="button" data-bs-target="#carousel-grasping" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#carousel-grasping" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#carousel-grasping" data-bs-slide-to="2"></button>
       </div>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="results/estimates/qualitative_contour_2.png" class="d-block w-100">
+            <video class="img-fluid" loop muted controls>   
+              <source src="results/grasping/grasping_bowl_1.mp4" type="video/mp4">
+            </video>
         </div>
         <div class="carousel-item">
-          <img src="results/estimates/qualitative_contour.png" class="d-block w-100">
+            <video class="img-fluid" loop muted controls>   
+              <source src="results/grasping/grasping_bowl_1.mp4" type="video/mp4">
+            </video>
         </div>
         <div class="carousel-item">
-          <img src="results/estimates/qualitative_contour_2.png" class="d-block w-100">
+            <video class="img-fluid" loop muted controls>   
+              <source src="results/grasping/grasping_bowl_1.mp4" type="video/mp4">
+            </video>
         </div>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <button class="carousel-control-prev" type="button" data-bs-target="#carousel-grasping" data-bs-slide="prev">
         <span class="carousel-control-prev-icon"></span>
         <span class="visually-hidden">Previous</span>
       </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <button class="carousel-control-next" type="button" data-bs-target="#carousel-grasping" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
         <span class="visually-hidden">Next</span>
       </button>
     </div>
@@ -198,11 +243,9 @@
 
   <h3> Large-scale synthetic dataset </h3>
   We release the large-scale synthetic training dataset we used to train MegaPose. You can use it for your own task! Please see the  <a href="https://github.com/megapose6d/megapose6d">github repository</a> for usage.
-  <center>
   <div class="figure">
-      <img class="img-responsive"  src="images/training-images.jpg"/>
+      <img src="images/training-images.jpg"/>
   </div>
-  </center>
 </div>
 
 <div class="block-bibtex">

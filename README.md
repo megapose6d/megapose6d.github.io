@@ -1,7 +1,9 @@
 # MegaPose website
 
 # Dev instructions
-```npm install
-npm run scss```
+```
+npm install
+npm run scss
+```
 
 

@@ -7,14 +7,16 @@ a{
 
 .webpage {
   @extend .container;
+  font-family: 'Google Sans', sans-serif;
 }
 
 .block {
   @extend .container;
   @extend .bg-light;
-  @extend .m-4;
   @extend .p-3;
   @extend .rounded-4;
+  @extend .my-3;
+  @extend .border;
 }
 
 .block-title {
@@ -23,6 +25,7 @@ a{
 
 .block-presentation{
   @extend .block;
+  display: block;
 }
 
 .block-abstract {
@@ -45,34 +48,30 @@ a{
   @extend .block;
 }
 
-.figure-logos {
-  @extend .container;
-  @extend .p-3;
-}
-
-.figure-logos img {
-  width: 80%;
-}
-
 .figure {
   @extend .container;
-  @extend .p-3;
+  @extend .my-3;
+  @extend .p-0;
 }
 
 .figure img {
-  width: 100%;
+  @extend .img-fluid;
 }
 
 .publication-title {
-  font-family: 'Google Sans', sans-serif;
 }
 
 .publication-authors {
-  font-family: 'Google Sans', sans-serif;
+}
+
+.publication-authors li {
+  @extend .list-inline-item;
 }
 
 .publication-links {
   font-family: 'Google Sans', sans-serif;
+  @extend .my-2;
+
 }
 
 .link-block {
@@ -90,84 +89,34 @@ a{
 }
 
 
-.publication-video {
-    position: relative;
-    width: 100%;
-    height: 0;
-    padding-bottom: 56.25%;
-    overflow: hidden;
-    border-radius: 10px !important;
+.youtube-video {
+  @extend .ratio;
+  @extend .ratio-16x9;
+  @extend .rounded;
+  @extend .my-2;
+  overflow: hidden;
 }
 
-.publication-video iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+video {
+  @extend .w-100;
+  @extend .my-2;
 }
+
 
 pre{
   white-space: pre-wrap;
   background-color: rgb(222, 213, 213);
-  @extend .p-2;
+  @extend .p-1;
+  @extend .rounded;
 }
 
-// Useless
-// .author-block {
-//   pan style="white-space:nowrap";
-// }
-.post-pub{
-  @extend .row;
+.carousel-control-prev,
+.carousel-control-next{
+  top: 30%;
+  height: 30%;
 }
 
-.pub-img{
-  @extend .col-md-5;
-  @extend .col-sm-12;
-}
-
-.thumbnail{
-  @extend .img-thumbnail;
-  @extend .img-fluid;
-//   @extend .float-end;
-  @extend .mx-auto;
-  @extend .d-block;
-
-  max-height: 200px;
-}
-
-.pub-details{
-  @extend .col-md-7;
-  @extend .col-sm-12;
-}
-
-.pub-infos{
-  @extend .col-md-7;
-  @extend .col-sm-12;
-}
-
-.pub-hrefs{
-    @extend .btn-toolbar;
-}
-
-
-.details-highlight{
-    color: #e74444;
-}
-
-.href-btn{
-  @extend .btn;
-  @extend .btn-primary;
-  @extend .mb-1;
-  @extend .me-1;
-}
-
-.href-btn-invalid{
-  @extend .btn-light;
-  @extend .href-btn;
-}
-
-.href-link{
-  color: #ffffff !important;
-  text-decoration: none;
+.carousel-indicators{
+  top: 0;
+  margin-top: 1rem;
 }
