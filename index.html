@@ -1,5 +1,298 @@
 <!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="MegaPose 6D Pose Estimation of Novel Objects via Render & Compare.">
+  <meta name="keywords" content="Object Pose Estimation,Robot Manipulation,Computer Vision">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="./scss/style.css">
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <title>MegaPose</title>
+</head>
+
 <body>
-Coming soon...
+
+<div class="webpage">
+
+<div class="block-title">
+  <hr>
+  <center>
+
+  <h1 class="publication-title"> 
+    <b> MegaPose</b> <br>6D Pose Estimation of Novel Objects via Render & Compare </b> 
+  </h1>
+
+  <h4>CoRL 2022</h4>
+
+  <h4 class="publication-authors">
+    <ul class="list-inline">
+      <li><a href="http://ylabbe.github.io">Yann Labbé<sup>1,&#8224;</sup></a>,</li>
+      <li><a href="http://lucasmanuelli.com/">Lucas Manuelli<sup>2</sup></a>,</li>
+      <li><a href="https://cs.gmu.edu/~amousavi/">Arsalan Mousavian<sup>2</sup></a>,</li>
+      <li><a href="https://research.nvidia.com/person/stephen-tyree">Stephen Tyree<sup>2</sup></a>,</li>
+      <li><a href="https://cecas.clemson.edu/~stb/">Stan Birchfield<sup>2</sup></a>,</li>
+      <li><a href="https://research.nvidia.com/person/jonathan-tremblay">Jonathan Tremblay<sup>2</sup></a></li>
+      <li><a href="https://jcarpent.github.io/">Justin Carpentier<sup>1</sup></a>,</li>
+      <li><a href="http://imagine.enpc.fr/~aubrym/">Mathieu Aubry<sup>3</sup></a>,</li>
+      <li><a href="https://homes.cs.washington.edu/~fox/">Dieter Fox<sup>2,4</sup></a>,</li>
+      <li><a href="http://people.ciirc.cvut.cz/~sivic/">Josef Sivic<sup>5</sup></a></li>
+    </ul>
+  </h4>
+  <div class="figure">
+   &#8224 Work partially done while the author was an intern at Nvidia
+      <img src="images/logos.png"/>
+  </div>
+
+  <div class="publication-links">
+    <a href=""><button class="link-btn">Paper on arXiv</button></a>
+    <a href="https://github.com/megapose6d/megapose6d"><button class="link-btn">Code</button></a>
+    <a href="https://www.youtube.com/watch?v=ZHsNkF9rfKo"><button class="link-btn">Video (1min presentation)</button></a>
+    <a href="https://www.youtube.com/watch?v=nwWxZQSZD7c"><button class="link-btn">Video (results)</button></a>
+  </div>
+  </center>
+</div>
+
+<div class="block-presentation">
+  <h4> Overview</h4>
+  <div class="figure">
+      <img src="images/teaser.png"/>
+  </div>
+
+  <p align="justify">
+  <b>MegaPose</b> is a 6D pose estimation approach (a) that is trained on millions of synthetic scenes with thousands of different objects and (b) can be applied <em>without re-training</em> to estimate the pose of any novel object, given a CAD model and a region of interest displaying the object. It can thus be used to rapidly deploy visually guided robotic manipulation systems in novel scenes containing novel objects (c).
+  </p>
+
+  <h4> 1 min presentation video</h4>
+
+  <div class="youtube-video">
+    <iframe src="https://www.youtube.com/embed/ZHsNkF9rfKo" title="MegaPose - CoRL 2022 -  1 min presentation" allowfullscreen></iframe>
+  </div>
+</div>
+
+<div class="block-abstract">
+  <h2>Abstract</h2>
+  <p align="justify">
+  We introduce MegaPose, a method to estimate the 6D pose of novel objects, that is, objects unseen during training.
+  At inference time, the method only assumes knowledge of (i) a region of interest displaying the object in the image and (ii) a CAD model of the observed object.
+  The contributions of this work are threefold. 
+  First, we present a 6D pose refiner based on a render & compare strategy which can be applied to novel objects. The shape and coordinate system of the novel object are provided as inputs to the network by rendering multiple synthetic views of the object's CAD model.
+  Second, we introduce a novel approach for coarse pose estimation which leverages a network trained to classify whether the pose error between a synthetic rendering and an observed image of the same object can be corrected by the refiner.
+  Third, we introduce a large scale synthetic dataset of photorealistic images of thousands of objects with diverse visual and shape properties, and show that this diversity is crucial to obtain good generalization performance on novel objects.
+  We train our approach on this large synthetic dataset and apply it <i>without retraining</i> to hundreds of novel objects in real images from several pose estimation benchmarks. Our approach achieves state-of-the-art performance on the ModelNet and YCB-Video datasets. An extensive evaluation on the 7 core datasets of the BOP challenge demonstrates that our approach achieves performance competitive with existing approaches that require access to the target objects during training. Code, dataset and trained models are made available.
+  </p>
+</div>
+
+<div class="block-method">
+  <h2>Method</h2>
+  <div class="figure">
+      <img src="images/method.png"/>
+  </div>
+  <p align="justify">
+  \(\oplus\) denotes concatenation. <b>(a) Coarse Estimator:</b> Given a cropped input image the coarse module renders the object in multiple input poses \(\{\mathcal{T}_{CO}^j\}\). The coarse network then classifies which rendered image best matches the observed image. <b>(b) Refiner:</b> Given an initial pose estimate \(\mathcal{T}_{CO}^k\) the refiner renders the objects at the estimated pose \(\mathcal{T}_{\textit{CO},1} := \mathcal{T}_{CO}^k\) (blue axes) along with 3 additional viewpoints \(\{\mathcal{T}_{\textit{CO},i}\}_{i=2}^4\) (green axes) defined such that the camera \(z\)-axis intersects the anchor point \(\mathcal{O}\). The refiner network consumes the concatenation of the observed and rendered images and predicts an updated pose estimate \(\mathcal{T}_{CO}^{k+1}\).
+  </p>
+</div>
+
+<div class="block-results">
+  <h2>Qualitative results</h2>
+
+  <h4>Video</h4>
+  <div class="youtube-video">
+  <iframe src="https://www.youtube.com/embed/nwWxZQSZD7c" title="MegaPose - CoRL 2022 - Results" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+  <br>
+
+  <h4>Results on the BOP datasets</h4>
+  <div id="carousel-estimates" class="carousel slide" data-bs-ride="true">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carousel-estimates" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#carousel-estimates" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#carousel-estimates" data-bs-slide-to="2"></button>
+        <button type="button" data-bs-target="#carousel-estimates" data-bs-slide-to="3"></button>
+        <button type="button" data-bs-target="#carousel-estiamtes" data-bs-slide-to="4"></button>
+        <button type="button" data-bs-target="#carousel-estimates" data-bs-slide-to="5"></button>
+        <button type="button" data-bs-target="#carousel-estimates" data-bs-slide-to="6"></button>
+        <button type="button" data-bs-target="#carousel-estimates" data-bs-slide-to="7"></button>
+        <button type="button" data-bs-target="#carousel-estimates" data-bs-slide-to="8"></button>
+        <button type="button" data-bs-target="#carousel-estimates" data-bs-slide-to="9"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="results/estimates/estimates-000.jpg" class="d-block w-100">
+        </div>
+        <div class="carousel-item">
+          <img src="results/estimates/estimates-001.jpg" class="d-block w-100">
+        </div>
+        <div class="carousel-item">
+          <img src="results/estimates/estimates-002.jpg" class="d-block w-100">
+        </div>
+        <div class="carousel-item">
+          <img src="results/estimates/estimates-003.jpg" class="d-block w-100">
+        </div>
+        <div class="carousel-item">
+          <img src="results/estimates/estimates-004.jpg" class="d-block w-100">
+        </div>
+        <div class="carousel-item">
+          <img src="results/estimates/estimates-005.jpg" class="d-block w-100">
+        </div>
+        <div class="carousel-item">
+          <img src="results/estimates/estimates-006.jpg" class="d-block w-100">
+        </div>
+        <div class="carousel-item">
+          <img src="results/estimates/estimates-007.jpg" class="d-block w-100">
+        </div>
+        <div class="carousel-item">
+          <img src="results/estimates/estimates-008.jpg" class="d-block w-100">
+        </div>
+        <div class="carousel-item">
+          <img src="results/estimates/estimates-009.jpg" class="d-block w-100">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carousel-estimates" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carousel-estimates" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+ For each example, we show (from left to right) (i) the input region of interest (ii) the coarse estimate, and (iii) the refined poses.
+<br>
+<br>
+<br>
+
+  <h4>Tracking results</h4>
+
+  <div id="carousel-tracking" class="carousel slide" data-bs-ride="true">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carousel-tracking" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#carousel-tracking" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#carousel-tracking" data-bs-slide-to="2"></button>
+        <button type="button" data-bs-target="#carousel-tracking" data-bs-slide-to="3"></button>
+        <button type="button" data-bs-target="#carousel-tracking" data-bs-slide-to="4"></button>
+        <button type="button" data-bs-target="#carousel-tracking" data-bs-slide-to="5"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+            <video class="img-fluid" loop muted controls>   
+              <source src="results/tracking/bleach_wrist_cam.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="carousel-item">
+            <video class="img-fluid" loop muted controls>   
+              <source src="results/tracking/master_chef_contour_blend.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="carousel-item">
+            <video class="img-fluid" loop muted controls>   
+              <source src="results/tracking/mustard_clutter.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="carousel-item">
+            <video class="img-fluid" loop muted controls>   
+              <source src="results/tracking/drill_contour_blend.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="carousel-item">
+            <video class="img-fluid" loop muted controls>   
+              <source src="results/tracking/red_bowl_clutter_contour_blend.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="carousel-item">
+            <video class="img-fluid" loop muted controls>   
+              <source src="results/tracking/scissors_contour_blend.mp4" type="video/mp4">
+            </video>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carousel-tracking" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carousel-tracking" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+  <h4>Robotic experiments</h4>
+
+  <div id="carousel-grasping" class="carousel slide" data-bs-ride="true">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carousel-grasping" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#carousel-grasping" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#carousel-grasping" data-bs-slide-to="2"></button>
+        <button type="button" data-bs-target="#carousel-grasping" data-bs-slide-to="3"></button>
+        <button type="button" data-bs-target="#carousel-grasping" data-bs-slide-to="4"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+            <video class="img-fluid" loop muted controls>   
+              <source src="results/grasping/Megapose_bleach_grasp.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="carousel-item">
+            <video class="img-fluid" loop muted controls>   
+              <source src="results/grasping/megapose_bowl_grasp.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="carousel-item">
+            <video class="img-fluid" loop muted controls>   
+              <source src="results/grasping/MegaPose_drill_grasp.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="carousel-item">
+            <video class="img-fluid" loop muted controls>   
+              <source src="results/grasping/MegaPose_mustard_grasp.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="carousel-item">
+            <video class="img-fluid" loop muted controls>   
+              <source src="results/grasping/megapose_scissor_grasp.mp4" type="video/mp4">
+            </video>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carousel-grasping" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carousel-grasping" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+</div>
+  
+<div class="block-usage">
+  <h1>Using MegaPose</h1>
+  <h3> 6D pose estimation of novel objects </h3>
+  <p>You can try MegaPose using the 3D models of your own objects! We provide a notebook for running pose estimation on new objects in the <a href="https://github.com/megapose6d/megapose6d">github repository</a>.
+  </p>
+
+  <h3> Large-scale synthetic dataset </h3>
+  We release the large-scale synthetic training dataset we used to train MegaPose. You can use it for your own task! Please see the  <a href="https://github.com/megapose6d/megapose6d">github repository</a> for usage.
+  <div class="figure">
+      <img src="images/training-images.jpg"/>
+  </div>
+</div>
+
+<div class="block-bibtex">
+  <h4> BibTeX</h4>
+  <pre><code>@inproceedings{labbe2022megapose,
+    title     = {MegaPose: 6D Pose Estimation of Novel Objects via Render \& Compare},
+    author    = {Labb\'e, Yann and Manuelli, Lucas and Mousavian, Arsalan and Tyree, Stephen and Birchfield, Stan and Tremblay, Jonathan and Carpentier, Justin and Aubry, Mathieu and Fox, Dieter and Sivic, Josef},
+    booktitle = {Proceedings of the 6th Conference on Robot Learning (CoRL)},
+    year      = {2022},
+  }</code> </pre>
+</div>
+
+<hr>
+</div>
+<script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<script src="./node_modules/popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="./node_modules/bootstrap/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -1,0 +1,122 @@
+// 5. Add additional custom code here
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+a{
+  text-decoration: none;
+}
+
+.webpage {
+  @extend .container;
+  font-family: 'Google Sans', sans-serif;
+}
+
+.block {
+  @extend .container;
+  @extend .bg-light;
+  @extend .p-3;
+  @extend .rounded-4;
+  @extend .my-3;
+  @extend .border;
+}
+
+.block-title {
+  @extend .container;
+}
+
+.block-presentation{
+  @extend .block;
+  display: block;
+}
+
+.block-abstract {
+  @extend .block;
+}
+
+.block-method {
+  @extend .block;
+}
+
+.block-results {
+  @extend .block;
+}
+
+.block-usage {
+  @extend .block;
+}
+
+.block-bibtex {
+  @extend .block;
+}
+
+.figure {
+  @extend .container;
+  @extend .my-3;
+  @extend .p-0;
+}
+
+.figure img {
+  @extend .img-fluid;
+}
+
+.publication-title {
+}
+
+.publication-authors {
+}
+
+.publication-authors li {
+  @extend .list-inline-item;
+}
+
+.publication-links {
+  font-family: 'Google Sans', sans-serif;
+  @extend .my-2;
+
+}
+
+.link-block {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+
+.link-btn{
+  @extend .btn;
+  @extend .btn-secondary;
+  @extend .rounded-pill;
+  @extend .mb-1;
+  @extend .me-1;
+}
+
+
+.youtube-video {
+  @extend .ratio;
+  @extend .ratio-16x9;
+  @extend .rounded;
+  @extend .my-2;
+  overflow: hidden;
+}
+
+video {
+  @extend .w-100;
+  @extend .my-2;
+}
+
+
+pre{
+  white-space: pre-wrap;
+  background-color: rgb(222, 213, 213);
+  @extend .p-1;
+  @extend .rounded;
+}
+
+.carousel-control-prev,
+.carousel-control-next{
+  top: 30%;
+  height: 30%;
+}
+
+.carousel-indicators{
+  top: 0;
+  margin-top: 1rem;
+}
