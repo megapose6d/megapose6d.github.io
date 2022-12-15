@@ -167,6 +167,8 @@
 
   <h4>Tracking results</h4>
 
+  In the first frame we run the complete megapose pose estimation pipeline consisting of (i) detection (ii) coarse estimation and (iii) multiple refinement steps (5 in this case). In subsequent frames we run a single pose refinement step using the previous pose estimate as the initialization.
+
   <div id="carousel-tracking" class="carousel slide" data-bs-ride="true">
       <div class="carousel-indicators">
         <button type="button" data-bs-target="#carousel-tracking" data-bs-slide-to="0" class="active"></button>
@@ -218,7 +220,9 @@
       </button>
     </div>
 
-  <h4>Robotic experiments</h4>
+  <h4>Robotic grasping experiments</h4>
+
+  In each video the robot attempts to grasp a specific target object (e.g. bleach bottle). The robot (i) moves back to capture an RGB image, (ii) estimates the pose of the target object and (iii) executes a specific grasp that has been annotated for each target object. We allow the robot to rotate the grasp by 180 degrees to ease kinematic reachability.
 
   <div id="carousel-grasping" class="carousel slide" data-bs-ride="true">
       <div class="carousel-indicators">
