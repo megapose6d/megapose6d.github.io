@@ -106,7 +106,7 @@
   <br>
 
   <h4>Results on the BOP datasets</h4>
-  <div id="carousel-estimates" class="carousel slide" data-bs-ride="true">
+  <div id="carousel-estimates" class="carousel slide" data-bs-interval="false">
       <div class="carousel-indicators">
         <button type="button" data-bs-target="#carousel-estimates" data-bs-slide-to="0" class="active"></button>
         <button type="button" data-bs-target="#carousel-estimates" data-bs-slide-to="1"></button>
@@ -179,34 +179,34 @@
         <button type="button" data-bs-target="#carousel-tracking" data-bs-slide-to="5"></button>
       </div>
       <div class="carousel-inner">
-        <div class="carousel-item active">
-            <video class="img-fluid" loop muted controls>   
-              <source src="results/tracking/bleach_wrist_cam.mp4" type="video/mp4">
-            </video>
-        </div>
         <div class="carousel-item">
-            <video class="img-fluid" loop muted controls>   
+            <video class="img-fluid" muted controls>   
               <source src="results/tracking/master_chef_contour_blend.mp4" type="video/mp4">
             </video>
         </div>
         <div class="carousel-item">
-            <video class="img-fluid" loop muted controls>   
+            <video class="img-fluid" muted controls>   
               <source src="results/tracking/mustard_clutter.mp4" type="video/mp4">
             </video>
         </div>
         <div class="carousel-item">
-            <video class="img-fluid" loop muted controls>   
+            <video class="img-fluid" muted controls>   
               <source src="results/tracking/drill_contour_blend.mp4" type="video/mp4">
             </video>
         </div>
         <div class="carousel-item">
-            <video class="img-fluid" loop muted controls>   
+            <video class="img-fluid" muted controls>   
               <source src="results/tracking/red_bowl_clutter_contour_blend.mp4" type="video/mp4">
             </video>
         </div>
         <div class="carousel-item">
-            <video class="img-fluid" loop muted controls>   
+            <video class="img-fluid" muted controls>   
               <source src="results/tracking/scissors_contour_blend.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="carousel-item active">
+            <video class="img-fluid" muted controls>   
+              <source src="results/tracking/bleach_wrist_cam.mp4" type="video/mp4">
             </video>
         </div>
       </div>
@@ -224,7 +224,7 @@
 
   In each video the robot attempts to grasp a specific target object (e.g. bleach bottle). The robot (i) moves back to capture an RGB image, (ii) estimates the pose of the target object and (iii) executes a specific grasp that has been annotated for each target object. We allow the robot to rotate the grasp by 180 degrees to ease kinematic reachability.
 
-  <div id="carousel-grasping" class="carousel slide" data-bs-ride="true">
+  <div id="carousel-grasping" class="carousel slide"  data-bs-interval="false">
       <div class="carousel-indicators">
         <button type="button" data-bs-target="#carousel-grasping" data-bs-slide-to="0" class="active"></button>
         <button type="button" data-bs-target="#carousel-grasping" data-bs-slide-to="1"></button>
@@ -234,27 +234,27 @@
       </div>
       <div class="carousel-inner">
         <div class="carousel-item active">
-            <video class="img-fluid" loop muted controls>   
+            <video class="img-fluid" muted controls>   
               <source src="results/grasping/Megapose_bleach_grasp.mp4" type="video/mp4">
             </video>
         </div>
         <div class="carousel-item">
-            <video class="img-fluid" loop muted controls>   
+            <video class="img-fluid" muted controls>   
               <source src="results/grasping/megapose_bowl_grasp.mp4" type="video/mp4">
             </video>
         </div>
         <div class="carousel-item">
-            <video class="img-fluid" loop muted controls>   
+            <video class="img-fluid" muted controls>   
               <source src="results/grasping/MegaPose_drill_grasp.mp4" type="video/mp4">
             </video>
         </div>
         <div class="carousel-item">
-            <video class="img-fluid" loop muted controls>   
+            <video class="img-fluid" muted controls>   
               <source src="results/grasping/MegaPose_mustard_grasp.mp4" type="video/mp4">
             </video>
         </div>
         <div class="carousel-item">
-            <video class="img-fluid" loop muted controls>   
+            <video class="img-fluid" muted controls>   
               <source src="results/grasping/megapose_scissor_grasp.mp4" type="video/mp4">
             </video>
         </div>
