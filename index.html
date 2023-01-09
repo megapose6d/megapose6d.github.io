@@ -169,7 +169,7 @@
 
   In the first frame we run the complete megapose pose estimation pipeline consisting of (i) detection (ii) coarse estimation and (iii) multiple refinement steps (5 in this case). In subsequent frames we run a single pose refinement step using the previous pose estimate as the initialization.
 
-  <div id="carousel-tracking" class="carousel slide" data-bs-ride="true">
+  <div id="carousel-tracking" class="carousel slide" data-bs-interval="false">
       <div class="carousel-indicators">
         <button type="button" data-bs-target="#carousel-tracking" data-bs-slide-to="0" class="active"></button>
         <button type="button" data-bs-target="#carousel-tracking" data-bs-slide-to="1"></button>
@@ -179,7 +179,7 @@
         <button type="button" data-bs-target="#carousel-tracking" data-bs-slide-to="5"></button>
       </div>
       <div class="carousel-inner">
-        <div class="carousel-item">
+        <div class="carousel-item active">
             <video class="img-fluid" muted controls>   
               <source src="results/tracking/master_chef_contour_blend.mp4" type="video/mp4">
             </video>
@@ -204,7 +204,7 @@
               <source src="results/tracking/scissors_contour_blend.mp4" type="video/mp4">
             </video>
         </div>
-        <div class="carousel-item active">
+        <div class="carousel-item">
             <video class="img-fluid" muted controls>   
               <source src="results/tracking/bleach_wrist_cam.mp4" type="video/mp4">
             </video>
